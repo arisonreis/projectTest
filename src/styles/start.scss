@@ -4,16 +4,16 @@
   --fontDecsription: "Lato", sans-serif;
 }
 @mixin ResponsiveBackgroundImage{
-  @media(max-width:750px){
-    background-size:400%;
+  @media(max-width:630px){
+    background-size: 500% 500%;
   }
 }
 .start {
   width: 100%;
-  height: calc(100vh - 50px);
+  height: calc(100vh - 60px);
   background-image: url(../imgs/bannerr.png);
   background-repeat: no-repeat;
-  background-size: 200%;
+  background-size: cover;
   text-align: left;
   padding: 3rem 6vw;
   @include ResponsiveBackgroundImage();

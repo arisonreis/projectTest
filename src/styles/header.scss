@@ -34,7 +34,7 @@
 // joga os itens mais pro centro no mobile
 @mixin paddingToAdjustCenter {
   @media (max-width: 831px) {
-    padding: 0 7rem;
+    padding: 0 3rem;
   }
 }
 // active button for menu
@@ -175,10 +175,9 @@ header {
 @keyframes fakeTranslate {
   from {
     transform: translateY(2px);
-    opacity: .5;
+    opacity: .9;
   }
   to {
     transform: translateY(0px);
-    opacity: 1;
   }
 }
