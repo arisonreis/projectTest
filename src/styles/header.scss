@@ -1,0 +1,184 @@
+//variables
+:root {
+  --colorMenuItem: #919191;
+  --hoverMenuItem: #9191912a;
+  --fontMenuItem: "Lato", sans-serif;
+  --colorHoverMeuItem: #2d8ef5ce;
+  --backgroundHeader1200px: #4a4cc2;
+}
+// cor azul do menu ao atingir determinada width
+@mixin backgroundHeaderQuery {
+  @media (max-width: 1200px) {
+    background-color: #4a4cc2;
+    background-image: none;
+  }
+}
+@mixin adjustHeaderHeight {
+  @media (max-width: 762px) {
+    height: 100px;
+  }
+}
+
+//removendo um pouco do padding para não danificar a responsividade e aproveitar a tela
+@mixin paddingRemoveHeader {
+  @media (max-width: 1119px) {
+    padding: 2rem 3%;
+  }
+}
+// removendo gap dos itens do menu para aproveitar mais tela
+@mixin gapRemove {
+  @media (max-width: 1119px) {
+    gap: 2rem;
+  }
+}
+// joga os itens mais pro centro no mobile
+@mixin paddingToAdjustCenter {
+  @media (max-width: 831px) {
+    padding: 0 7rem;
+  }
+}
+// active button for menu
+@mixin BtnActiveForUse {
+  @media (max-width: 831px) {
+    display: flex;
+    gap: 0.3rem;
+    align-items: center;
+    background: none;
+    border: none;
+    font-size: 1.2rem;
+    color: var(--colorMenuItem);
+    font-family: var(--fontMenuItem);
+    cursor: pointer;
+    font-weight: 500;
+    .icon {
+      font-size: 2rem;
+      font-weight: 800;
+    }
+  }
+}
+//ajusta o padding entre o button e boxImg
+@mixin adjustItemsMenuHeader {
+  @media (max-width: 492px) {
+    padding: 0;
+  }
+}
+// ajusta o tamanho da imagem
+@mixin adjustWidthLogoToResponsive {
+  @media (max-width: 492px) {
+    width: 10rem;
+  }
+}
+// ajusta os itens para celulares bem pequenos
+@mixin extremeResponsiveForSmartphone {
+  @media (max-width: 317px) {
+    padding: 0px;
+    padding-right: 0px;
+  }
+}
+header {
+  width: 100%;
+  height: 120px;
+  padding: 2rem 6%;
+  // position:fixed;
+  @include extremeResponsiveForSmartphone();
+  // paddig ajustado
+  background-image: url(../imgs/backHeader.png);
+  background-size: 100%;
+  //   inserindo funções de remoção de espaços
+  @include backgroundHeaderQuery();
+  @include paddingRemoveHeader();
+  @include adjustHeaderHeight();
+  .contentHeader {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    @include paddingToAdjustCenter();
+    @include adjustItemsMenuHeader();
+    .boxLogo {
+      padding-right: 5rem;
+      @media (max-width: 1119px) {
+        // esse padding right asegura o menu com uma certa distância da logo
+        padding-right: 3rem;
+      }
+      @media (max-width: 315px) {
+        padding-right: none;
+      }
+      @media (max-width: 317px) {
+        padding-right: 0.4rem;
+      }
+      .logo {
+        @include adjustWidthLogoToResponsive();
+      }
+    }
+    nav {
+      #menu {
+        @media (max-width: 831px) {
+          display: none;
+        }
+        display: flex;
+        gap: 4rem;
+        @include gapRemove();
+        justify-content: center;
+        .menuItem {
+          a {
+            color: var(--colorMenuItem);
+            font-size: 0.9rem;
+            font-family: var(--fontMenuItem);
+            font-weight: 600;
+            &:hover {
+              color: var(--colorHoverMeuItem);
+            }
+          }
+        }
+      }
+      button#btnMenu {
+        display: none;
+        @include BtnActiveForUse();
+      }
+    }
+    //menu Mobile
+    .active {
+      #menu {
+        position: absolute;
+        z-index: 2;
+        display: flex;
+        flex-direction: column;
+        top: 100px;
+        height: calc(100vh - 80px);
+        width: 100%;
+        left: 0;
+        font-size: 3rem;
+        gap: 2rem;
+        align-items: center;
+        justify-content: center;
+        background-color: #fff;
+        .menuItem {
+          text-align: center;
+          width: 100%;
+          &:hover {
+            background-color: var(--hoverMenuItem);
+            cursor: pointer;
+          }
+        }
+      }
+    }
+  }
+}
+//menu muda cor ao scroll
+.fixed {
+  position: fixed;
+  background-color: white;
+  background-image: none;
+  animation: fakeTranslate 1s;
+}
+
+@keyframes fakeTranslate {
+  from {
+    transform: translateY(2px);
+    opacity: .5;
+  }
+  to {
+    transform: translateY(0px);
+    opacity: 1;
+  }
+}

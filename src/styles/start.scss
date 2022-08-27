@@ -1,0 +1,43 @@
+:root {
+  --fontCenterContent: "Heebo", sans-serif;
+  --colorFontCenterContent: #fff;
+  --fontDecsription: "Lato", sans-serif;
+}
+@mixin ResponsiveBackgroundImage{
+  @media(max-width:750px){
+    background-size:400%;
+  }
+}
+.start {
+  width: 100%;
+  height: calc(100vh - 50px);
+  background-image: url(../imgs/bannerr.png);
+  background-repeat: no-repeat;
+  background-size: 200%;
+  text-align: left;
+  padding: 3rem 6vw;
+  @include ResponsiveBackgroundImage();
+  .boxTextStart {
+    max-width: 480px;
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    h1 {
+      color: var(--colorFontCenterContent);
+      font-family: var(--fontCenterContent);
+      font-size: 3rem;
+      font-style: normal;
+      font-weight: lighter;
+      padding-block-start: 2rem;
+      span {
+        font-weight: 600;
+      }
+    }
+    p {
+      color: var(--colorFontCenterContent);
+      font-size: 1rem;
+      font-weight: 100;
+      font-family: var(--fontDecsription);
+    }
+  }
+}
